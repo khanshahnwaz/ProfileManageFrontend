@@ -46,9 +46,9 @@ function Card(props) {
 
   return (
     <>
-      <div className="border-gray-200 rounded-xl shadow-lg hover:shadow-2xl p-4 flex justify-evenly ">
+      <div className="border-gray-200 rounded-xl shadow-md hover:shadow-2xl sm:p-4 p-2 flex justify-evenly ">
         <div className="my-auto w-full ">
-          <div className=" px-5">
+          <div className="sm:pr-5">
             <p>{props.data.Name}</p>
             <div>
               <p>{props.data.Email}</p>
@@ -75,7 +75,7 @@ function Card(props) {
           )}
         </div>
 
-        <div className=" h-24 w-24 m-auto">
+        <div className=" h-1/2 w-1/2 ">
           <img className="rounded-full " src={props.data.Photo} />
         </div>
       </div>

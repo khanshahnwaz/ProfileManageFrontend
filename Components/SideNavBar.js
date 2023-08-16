@@ -31,7 +31,7 @@ const SideNavBar = (props) => {
        </div>
        
         </div>
-        <div className="px-10 rounded-lg  text-lg font-semibold  text-center  absolute bottom-0">
+        <div className="px-4 py-2 rounded-lg  text-lg font-semibold  text-center  absolute bottom-0 border-2 border-gray-200 ">
             <button className=" " onClick={()=>{context.setWarningMessage('logOut')}}>LogOut</button>
         </div>
     </div>
