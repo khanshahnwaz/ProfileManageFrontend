@@ -33,9 +33,8 @@ const SignUp = (props) => {
       }
       if (!values.phone) {
         errors.phone = "Required";
-      } else if (!values.phone.toString().length == 10) {
-        errors.phone = "Invalid phone number";
-      }
+      } else if(values.phone.toString().length>10 || values.phone.toString().length<10)
+      errors.phone='Number should be 10 digit.'
       if (!values.email) {
         errors.email = "Required";
       } else if (

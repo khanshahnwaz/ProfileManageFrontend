@@ -45,7 +45,8 @@ const EditProfile = (props) => {
       }
       if (!values.phone) {
         errors.phone = "Required";
-      }
+      }else if(values.phone.toString().length>10 || values.phone.toString().length<10)
+         errors.phone='Number should be 10 digit.'
 
       return errors;
     },
