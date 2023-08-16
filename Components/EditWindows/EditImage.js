@@ -55,7 +55,7 @@ const EditImage = (props) => {
 
         <div
           id="container"
-          className="flex fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-40  bg-white rounded-lg shadow-2xl p-10 md:w-3/5 lg:w-2/5 "
+          className="flex fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-40  bg-white rounded-lg shadow-2xl p-10 w-[90%] md:w-3/5 lg:w-2/5 "
         >
           <FiX
             className="float-right fixed -traslate-x-1/2 -translate-y-1/2 -right-1 -top-2 hover:opacity-10 cursor-pointer text-3xl text-white"
@@ -64,7 +64,7 @@ const EditImage = (props) => {
 
           {/* right division */}
           <div className="bg-white h-full w-[100%] ">
-            <div className=" md:pb-10 p-5 ">
+            <div className=" md:pb-10 sm:p-5 ">
               {/* Form section  */}
 
               <form id="form" onSubmit={handleImage}>

@@ -24,48 +24,52 @@ function Profile(props) {
         <div className="bg-blue-900  lg:h-2/5 md:h-[250%] h-[10%] lg:w-4/5 w-[90%] mx-auto lg:mx-0 rounded-lg relative">
           <p className="text-white font-bold p-4">My Profile</p>
 
-          <div className="w-4/5 mx-auto lg:mx-0 bg-white md:absolute top-[30%] h-max left-24 border-2 border-gray-200 rounded-lg shadow-md ">
-            <div className="p-4 md:flex gap-x-3">
+          <div className="w-full sm:w-4/5 mx-auto lg:mx-0 bg-white md:absolute top-[30%] h-max left-24 border-2 border-gray-200 rounded-lg shadow-md ">
+            <div className="sm:p-4 py-4 px-1 md:flex gap-x-3">
               <div className="w-full grid gap-y-3">
-                <div className="flex justify-between w-full">
+                <div className="flex justify-between w-full break-normal">
                   <div className=" h-24 w-24">
                     <img className="rounded-full h-20" src={userData.Photo} />
                   </div>
-                  <button
-                    className="px-4 py-1 rounded-xl bg-gray-200 h-max my-auto"
-                    onClick={() => context.setEditImage(true)}
-                  >
-                    Upload Photo
-                  </button>
+                  <div>
+                    <button
+                      className="px-4 py-1 rounded-xl bg-gray-200 h-max my-auto"
+                      onClick={() => context.setEditImage(true)}
+                    >
+                      Upload Photo
+                    </button>
+                  </div>
                 </div>
 
                 {/* first form section */}
                 <div className="w-full border-2 border-gray-200 p-3 grid gap-y-3">
                   {/* email */}
-                  <div className="flex justify-between">
-                    <div>
-                      <p>Email</p>
-                      <p>{userData.Email}</p>
+                  <div className='min-w-0'>
+                    <div className="flex justify-between">
+                      <div>
+                        <p>Email</p>
+                        <p>{userData.Email}</p>
+                      </div>
+                      <button
+                        className="px-4  rounded-xl bg-gray-200 h-max my-auto"
+                        onClick={() => context.setEditProfile(true)}
+                      >
+                        Edit
+                      </button>
                     </div>
-                    <button
-                      className="px-4  rounded-xl bg-gray-200 h-max my-auto"
-                      onClick={() => context.setEditProfile(true)}
-                    >
-                      Edit
-                    </button>
-                  </div>
-
-                  <div className="flex justify-between">
-                    <div>
-                      <p>Your Name</p>
-                      <p>{userData.Name}</p>
+           
+                    <div className="flex justify-between">
+                      <div>
+                        <p>Your Name</p>
+                        <p>{userData.Name}</p>
+                      </div>
+                      <button
+                        className="px-4 rounded-xl bg-gray-200 h-max my-auto"
+                        onClick={() => context.setEditProfile(true)}
+                      >
+                        Edit
+                      </button>
                     </div>
-                    <button
-                      className="px-4 rounded-xl bg-gray-200 h-max my-auto"
-                      onClick={() => context.setEditProfile(true)}
-                    >
-                      Edit
-                    </button>
                   </div>
 
                   {/* phone  */}
