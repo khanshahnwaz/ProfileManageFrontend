@@ -1,8 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+Install all the dependency by running command ```npm install ``` in root directory.
+This will download all the dependeceis  to run the frontend.
 
-First, run the development server:
+
+## Install dependecy for backend 
+Navigate to ```Backend``` folder and then do ```npm install```
+
+## start both frontend and backend with one command
+In project root directory, run ```npm run both ```
+
+## start nextJs application
 
 ```bash
 npm run dev
@@ -12,27 +20,23 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Start using the application
+Start by creating accound using the registration form.
+After successfull registration, you will be redirected to profile page.
+For demonstration purpose, there will be some fake data filled in your professional details.
+You will be getting an option to delete those fake or dummy data and fill yours using editable pop ups.
+A delete icon is there to delete information.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Connection page
+Click on Connection given in Side navigation bar to go to connection page. 
+From registered users list, you can add or remove connections by clicking on buttons given.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Logout button is there is bottom left corner to log out. 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
+Both the frontend and backend is deployed on vercel. 
+[DeployedWebsiteLink](https://checking-khaki.vercel.app)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[HostedExpressApp](https://profilemanager-api.vercel.app)

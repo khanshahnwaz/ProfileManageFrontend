@@ -103,8 +103,7 @@ function Profile(props) {
                   <div className="text-left">
                     <b>Professional Details</b>
                     <p>
-                      These are the professional details, shown to user in the
-                      app.
+                      Add your professional details to show your skills to the world.
                     </p>
                     {/* text written over here */}
                   </div>
