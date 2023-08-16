@@ -65,9 +65,9 @@ const SignUp = (props) => {
       });
       const dat = await response.json();
       if (dat.status == 201) {
-        // context.setSuccessMessage(dat.Message);
+        context.setSuccessMessage(dat.Message);
         localStorage.setItem("token", dat.token);
-        router.push('/home');
+        // router.push('/home');
         // localStorage.setItem("data", JSON.stringify(dat.data));
       } else context.setErrorMessage(dat.Message);
     },

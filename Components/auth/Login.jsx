@@ -58,9 +58,10 @@ const Login = (props) => {
       console.log(result.Message);
       // result.status===200?localStorage.setItem({token:result.token}):null
       if (result.status === 200) {
+        // router.push('/home');
+        context.setSuccessMessage(result.Message);
         localStorage.setItem("token", result.token);
-        router.push('/home');
-        // context.setSuccessMessage(result.Message);
+
         // localStorage.setItem("data", JSON.stringify(result.data));
       } else {
         context.setErrorMessage(result.Message);
