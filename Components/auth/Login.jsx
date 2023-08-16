@@ -57,7 +57,7 @@ const Login = (props) => {
       // result.status===200?localStorage.setItem({token:result.token}):null
       if (result.status === 200) {
         localStorage.setItem("token", result.token);
-        context.setSuccessMessage(result.Message);
+        // context.setSuccessMessage(result.Message);
         // localStorage.setItem("data", JSON.stringify(result.data));
       } else {
         context.setErrorMessage(result.Message);
