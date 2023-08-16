@@ -9,7 +9,7 @@ export default function Home() {
   const [signUp, setSignUp] = useState(false);
   const [signIn, setSignIn] = useState(true);
   return (
-    <main className="grid gap-y-8">
+    <main className="">
       {signUp ? <Register setSignIn={setSignIn} setSignUp={setSignUp} /> : null}
       {signIn ? <Login setSignIn={setSignIn} setSignUp={setSignUp} /> : null}
     </main>
