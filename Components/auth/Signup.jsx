@@ -7,7 +7,9 @@ import { useEffect } from "react";
 import { ProfileContext } from "../../Context/ProfileState";
 import SuccessModal from "../Modals/Successful";
 import ErrorModal from "../Modals/Error";
+import { useRouter } from "next/router";
 const SignUp = (props) => {
+  const router=useRouter();
   const context = useContext(ProfileContext);
 
   // state to manage the error tooltip for every input box
@@ -65,6 +67,7 @@ const SignUp = (props) => {
       if (dat.status == 201) {
         // context.setSuccessMessage(dat.Message);
         localStorage.setItem("token", dat.token);
+        router.push('/home');
         // localStorage.setItem("data", JSON.stringify(dat.data));
       } else context.setErrorMessage(dat.Message);
     },

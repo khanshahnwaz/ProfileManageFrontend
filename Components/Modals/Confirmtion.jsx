@@ -21,7 +21,7 @@ const Confirmtion = (props) => {
       console.log("logging out");
       navigate.push("/");
       localStorage.removeItem("token");
-      localStorage.removeItem("data");
+      // localStorage.removeItem("data");
       // context.setLoggedInName('Andc_Treasure')
     }
     // case 2: User is trying to delete any publication

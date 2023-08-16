@@ -9,7 +9,9 @@ import Link from "next/link";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { ProfileContext } from "@/Context/ProfileState";
+import { useRouter } from "next/router";
 const Login = (props) => {
+  const router=useRouter();
   const context = useContext(ProfileContext);
 
   // state to manage the error tooltip for every input box
@@ -57,6 +59,7 @@ const Login = (props) => {
       // result.status===200?localStorage.setItem({token:result.token}):null
       if (result.status === 200) {
         localStorage.setItem("token", result.token);
+        router.push('/home');
         // context.setSuccessMessage(result.Message);
         // localStorage.setItem("data", JSON.stringify(result.data));
       } else {
