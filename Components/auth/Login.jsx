@@ -3,8 +3,8 @@
 import { useFormik } from "formik";
 import { useContext, useEffect, useState } from "react";
 // import { PublicationContext } from "../../Context/PublicationState";
-// import Error from "../Modals/Error";
-// import Successful from "../Modals/Successful";
+import Error from "../Modals/Error";
+import Successful from "../Modals/Successful";
 import Link from "next/link";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -77,8 +77,8 @@ const Login = (props) => {
   return (
     <>
       {/* <!-- Overlay element --> */}
-      {/* <Error url="/" />
-      <Successful url="/home" /> */}
+      <Error url="/" />
+      <Successful url="/home" />
       <div className="fixed  z-30 w-screen h-screen inset-0 bg-gray-900 bg-opacity-90"></div>
 
       <div

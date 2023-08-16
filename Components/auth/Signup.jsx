@@ -5,8 +5,8 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { useEffect } from "react";
 import { ProfileContext } from "../../Context/ProfileState";
-// import SuccessModal from "../Modals/Successful";
-// import ErrorModal from "../Modals/Error";
+import SuccessModal from "../Modals/Successful";
+import ErrorModal from "../Modals/Error";
 const SignUp = (props) => {
   const context = useContext(ProfileContext);
 
@@ -89,8 +89,8 @@ const SignUp = (props) => {
   // console.log("Visited fields",formik.touched)
   return (
     <>
-      {/* <SuccessModal url="/home" />
-      <ErrorModal url="/" /> */}
+      <SuccessModal url="/home" />
+      <ErrorModal url="/" />
       {/* <!-- Overlay element --> */}
       <div className="fixed  z-30 w-screen h-screen inset-0 bg-gray-900 bg-opacity-90"></div>
 
@@ -120,7 +120,7 @@ const SignUp = (props) => {
             <p className="text-left text-4xl font-bold tracking-wide text-blue-900">
               Sign Up
             </p>
-            <p className="mt-2 text-sm tracking-wide text-left font-semibold text-black">
+            <p className="mt-2 text-sm tracking-wide text-left font-semibold">
               Have an account?
               <span
                 className="text-blue-900 cursor-pointer"
