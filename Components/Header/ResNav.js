@@ -1,15 +1,16 @@
 import {FiChevronDown,FiBell,FiAlignJustify } from "react-icons/fi";
-
+import { useRouter } from "next/router";
 function ResNav(props) {
+  const router=useRouter();
   const {name,photo}=props;
     const Menu= (e)=>{
         let list = document.querySelector('ul');
         e.name === 'menu' ? (e.name = "close",list.classList.add('top-[80px]') , list.classList.add('opacity-100')) :( e.name = "menu" ,list.classList.remove('top-[80px]'),list.classList.remove('opacity-100'))
       }
   return (
-<nav className="p-5 bg-white shadow lg:hidden">
+<nav className="p-5 bg-white shadow lg:hidden"  name="menu" onClick={(e)=>Menu(e.target)}>
   <div className="flex justify-between">
-<div className="text-3xl cursor-pointer mx-2 block my-auto"  name="menu" onClick={(e)=>Menu(e.target)}>
+<div className="text-3xl cursor-pointer mx-2 block my-auto" >
     {/* <p name="menu" onClick={(e)=>Menu(e.target)}>CLick me</p> */}
     <FiAlignJustify/>
   </div>
@@ -39,6 +40,9 @@ function ResNav(props) {
   </li>
   <li className="mx-4 my-6 md:my-0" onClick={()=>props.setSection(false)}>
     <p className="text-xl hover:text-blue-700 duration-500">CONNECTIONS</p>
+  </li>
+  <li className="mx-4 my-6 md:my-0 text-xl hover:text-blue-700 duration-500" onClick={()=>[localStorage.removeItem('token'),router.push('/')]}>
+    LogOut
   </li>
 </ul>
 </nav>

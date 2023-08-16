@@ -42,9 +42,9 @@ function Profile(props) {
                 </div>
 
                 {/* first form section */}
-                <div className="w-full border-2 border-gray-200 p-3 grid gap-y-3">
+                <div className="w-full border-2 border-gray-200 p-3 ">
                   {/* email */}
-                  <div className='min-w-0'>
+                  <div className='min-w-0 grid gap-y-3'>
                     <div className="flex justify-between">
                       <div>
                         <p>Email</p>
@@ -70,7 +70,7 @@ function Profile(props) {
                         Edit
                       </button>
                     </div>
-                  </div>
+                  
 
                   {/* phone  */}
                   <div className="flex justify-between">
@@ -84,6 +84,7 @@ function Profile(props) {
                     >
                       Edit
                     </button>
+                  </div>
                   </div>
                 </div>
 
