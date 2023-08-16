@@ -44,12 +44,6 @@ const Confirmtion = (props) => {
       // console.log("Hello am I running.")
       const result = await response.json();
       if (result.status == 200) {
-        let temp = JSON.parse(localStorage.getItem("data"));
-
-        // context.setSuccessMessage("Certificate deleted successfully.")
-        temp.certificate = result.data;
-        console.log("New data is", temp);
-        localStorage.setItem("data", JSON.stringify(temp));
 
         context.setWarningMessage(null);
       } else {
@@ -72,12 +66,6 @@ const Confirmtion = (props) => {
 
       const result = await response.json();
       if (result.status == 200) {
-        let temp = JSON.parse(localStorage.getItem("data"));
-
-        // context.setSuccessMessage("Experience deleted successfully.")
-
-        temp.education = result.data;
-        localStorage.setItem("data", JSON.stringify(temp));
 
         context.setWarningMessage(null);
       } else {
@@ -100,9 +88,7 @@ const Confirmtion = (props) => {
 
       const result = await response.json();
       if (result.status == 200) {
-        let temp = JSON.parse(localStorage.getItem("data"));
-        temp.experience = result.data;
-        localStorage.setItem("data", JSON.stringify(temp));
+         context.setWarningMessage(null);
         // context.setSuccessMessage(result.Message)
       } else {
         context.setErrorMessage(result.Message);
