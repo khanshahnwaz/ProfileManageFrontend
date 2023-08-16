@@ -140,7 +140,7 @@ const Login = (props) => {
                   >
                     <input
                       type="text"
-                      className="border-2 border-[#bd8ce2] rounded-lg float-left mt-1 py-2 w-full"
+                      className="border-2 border-blue-900 rounded-lg float-left mt-1 py-2 w-full"
                       name="email"
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
@@ -164,7 +164,7 @@ const Login = (props) => {
                   >
                     <input
                       type="text"
-                      className="border-2 border-[#bd8ce2] rounded-lg float-left mt-1 py-2 w-full"
+                      className="border-2 border-blue-900 rounded-lg float-left mt-1 py-2 w-full"
                       name="password"
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
