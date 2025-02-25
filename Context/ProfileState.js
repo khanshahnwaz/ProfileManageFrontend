@@ -9,8 +9,8 @@ const ProfileState = (props) => {
    })
 
   //  save the domain , since localy our server is running on port 3001
-  const url='http://localhost:3001'
-  // const url='https://profilemanager-api.vercel.app'
+  // const url='http://localhost:3001'
+  const url='https://profile-manager-backend.vercel.app/'
      // state to enable or disable the successfull modal box
      const [successMessage, setSuccessMessage] = useState(null);
      // state to enable or disable the error modal box
