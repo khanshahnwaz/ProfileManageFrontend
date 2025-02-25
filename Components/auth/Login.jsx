@@ -10,6 +10,7 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { ProfileContext } from "@/Context/ProfileState";
 import { useRouter } from "next/router";
+import Loader from "../Loader";
 const Login = (props) => {
   const router=useRouter();
   const context = useContext(ProfileContext);
@@ -17,7 +18,7 @@ const Login = (props) => {
   // state to manage the error tooltip for every input box
   const [visiEmail, setViisiEmail] = useState(false);
   const [visiPassword, setVisiPassword] = useState(false);
-
+  const[open,setOpen]=useState(false)
   // Formik library
   const formik = useFormik({
     initialValues: {
@@ -47,6 +48,7 @@ const Login = (props) => {
         Password: values.password,
       };
       // console.log("sent data",JSON.stringify(data))
+      setOpen(true);
       const response = await fetch(`${context.url}/user/login`, {
         method: "POST",
         headers: {
@@ -56,7 +58,7 @@ const Login = (props) => {
       });
       const result = await response.json();
       console.log(result.Message);
-      // result.status===200?localStorage.setItem({token:result.token}):null
+      setOpen(false)
       if (result.status === 200) {
         router.push('/home');
         // context.setSuccessMessage(result.Message);
@@ -83,6 +85,7 @@ const Login = (props) => {
       {/* <!-- Overlay element --> */}
       <Error url="/" />
       <Successful url="/home" />
+      <Loader open={open} setOpen={setOpen}/>
       <div className="fixed  z-30 w-screen h-screen inset-0 bg-gray-900 bg-opacity-90"></div>
 
       <div

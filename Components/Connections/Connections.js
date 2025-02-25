@@ -4,10 +4,12 @@ import { useEffect, useState, useContext } from "react";
 import Error from "../Modals/Error";
 import Successful from "../Modals/Successful";
 import { ProfileContext } from "@/Context/ProfileState";
+import Loader from "../Loader";
 const Connection = () => {
   const context = useContext(ProfileContext);
   const [connections, setConnections] = useState([]);
   const [notConnected, setNotConnected] = useState([]);
+  const[open,setOpen]=useState(false)
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
@@ -20,10 +22,12 @@ const Connection = () => {
           },
         }
       );
+      setOpen(true);
       const result = await response.json();
       console.log("data recieved from ", response);
       setConnections(result.Connected);
       setNotConnected(result.NConnected);
+      setOpen(false)
     }
     fetchData();
   }, [context]);
@@ -32,6 +36,7 @@ const Connection = () => {
     <>
       <Error url="/home" />
       <Successful url="/home" />
+      <Loader open={open} setOpen={setOpen}/>
       <div className="w-full">
         <div className=" sm:w-4/5 w-[90%] sm:px-10 px-5 h-full mx-auto lg:mx-0">
           <div className="min-h-1/2">

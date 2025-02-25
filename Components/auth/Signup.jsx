@@ -8,15 +8,23 @@ import { ProfileContext } from "../../Context/ProfileState";
 import SuccessModal from "../Modals/Successful";
 import ErrorModal from "../Modals/Error";
 import { useRouter } from "next/router";
+import Loader from "../Loader"
 const SignUp = (props) => {
   const router=useRouter();
   const context = useContext(ProfileContext);
 
   // state to manage the error tooltip for every input box
   const [visiEmail, setVisiEmail] = useState(false);
+  const[visiName,setVisiName]=useState(false);
+  const[visiUserName,setVisiUserName]=useState(false);
+  const[visiGender,setVisiGender]=useState(false)
   const [visiPhone, setVisiPhone] = useState(false);
   const [visiPassword, setVisiPassword] = useState(false);
   const [visiConPassword, setVisiConPassword] = useState(false);
+
+
+  // open loader
+  const[open,setOpen]=useState(false);
   // Formik library
   const formik = useFormik({
     initialValues: {
@@ -25,9 +33,15 @@ const SignUp = (props) => {
       phone: "",
       password: "",
       confirmPassword: "",
+      userName:"",
+      gender:""
     },
     validate: (values) => {
       const errors = {};
+      if(!values.gender)
+        errors.gender="Required"
+      if(!values.userName)
+        errors.userName="Required"
       if (!values.name) {
         errors.name = "Required";
       }
@@ -55,6 +69,7 @@ const SignUp = (props) => {
     },
     onSubmit: async (values) => {
       console.log("Form data is ", values);
+      setOpen(true);
       const response = await fetch(`${context.url}/user/signUp`, {
         method: "POST",
         headers: {
@@ -63,6 +78,7 @@ const SignUp = (props) => {
         body: JSON.stringify(values),
       });
       const dat = await response.json();
+      setOpen(false)
       if (dat.status == 201) {
         // context.setSuccessMessage(dat.Message);
         localStorage.setItem("token", dat.token);
@@ -75,6 +91,15 @@ const SignUp = (props) => {
   useEffect(() => {
     console.log("touched", formik.touched);
     console.log("errors", formik.errors);
+    if(formik.errors.gender && formik.touched.gender)
+      setVisiGender(true);
+    else setVisiGender(false)
+    if(formik.errors.userName && formik.touched.userName)
+      setVisiUserName(true);
+    else setVisiUserName(false);
+    if(formik.errors.name && formik.touched.name){
+      setVisiName(true);
+    }else setVisiName(false)
     if (formik.errors.email && formik.touched.email) {
       setVisiEmail(true);
     } else setVisiEmail(false);
@@ -93,6 +118,7 @@ const SignUp = (props) => {
     <>
       <SuccessModal url="/home" />
       <ErrorModal url="/" />
+      <Loader open={open} setOpen={setOpen}/>
       {/* <!-- Overlay element --> */}
       <div className="fixed  z-30 w-screen h-screen inset-0 bg-gray-900 bg-opacity-90"></div>
 
@@ -101,8 +127,8 @@ const SignUp = (props) => {
         className=" flex fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-40  bg-white rounded-lg shadow-2xl p-10 md:w-[50%] w-[92%] "
       >
         {/* left division */}
-        <div className="h-max bg-gradient-to-r from-blue-900 to-blue-700  border-white rounded-lg shadow-lg w-[350px] hidden lg:block">
-          <p className="text-left text-base font-bold text-white pl-10 mt-4">
+        <div className="mt-10 h-max bg-gradient-to-r from-blue-900 to-blue-700  border-white rounded-lg shadow-lg w-[350px] hidden lg:block">
+          <p className="text-left text-base font-bold text-white pl-10 ">
             Profile_Manager
           </p>
           <p className="text-4xl tracking-wider text-left mt-10 p-10 text-white font-bold">
@@ -118,7 +144,7 @@ const SignUp = (props) => {
         </div>
         {/* right division */}
         <div className="bg-white h-full w-[100%] lg:w-[50%] ">
-          <div className="mt-5 p-5 md:p-10 mb-0">
+          <div className=" p-5 md:px-10 mb-0">
             <p className="text-left text-4xl font-bold tracking-wide text-blue-900">
               Sign Up
             </p>
@@ -148,7 +174,7 @@ const SignUp = (props) => {
                   </label>
 
                   <Tippy
-                    visible={visiEmail}
+                    visible={visiName}
                     content={formik.errors.name}
                     placement="top-end"
                   >
@@ -162,6 +188,31 @@ const SignUp = (props) => {
                     ></input>
                   </Tippy>
                 </div>
+                {/* username */}
+                <div>
+                  <label
+                    htmlFor="userName"
+                    className="float-left text-blue-900 font-bold"
+                  >
+                    UserName
+                  </label>
+
+                  <Tippy
+                    visible={visiUserName}
+                    content={formik.errors.userName}
+                    placement="top-end"
+                  >
+                    <input
+                      type="text"
+                      className="border-2 border-blue-900 rounded-lg float-left mt-1 py-2 w-full"
+                      name="userName"
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      value={formik.values.userName}
+                    ></input>
+                  </Tippy>
+                </div>
+
                 <div>
                   <label
                     htmlFor="email"
@@ -206,6 +257,42 @@ const SignUp = (props) => {
                       onChange={formik.handleChange}
                       value={formik.values.phone}
                     ></input>
+                  </Tippy>
+                </div>
+
+                {/* gender */}
+                <div>
+                  <label
+                    htmlFor="gender"
+                    className="float-left text-blue-900 font-bold"
+                  >
+                    Gender
+                  </label>
+                  <br />
+                  <Tippy
+                    visible={visiGender}
+                    content={formik.errors.gender}
+                    placement="top-end"
+                  >
+                    <select 
+                    name="gender" 
+                    className="border-2 border-blue-900 rounded-lg float-left mt-1 py-2 w-full"
+                     value={formik.values.gender}
+                     onChange={formik.handleChange}
+                     onBlur={formik.handleBlur}>
+                      <option value="">Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Non Binary">Non Binary</option>
+                    </select>
+                    {/* <input
+                      type="text"
+                      className="border-2 border-blue-900 rounded-lg float-left mt-1 py-2 w-full"
+                      name="gender"
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      value={formik.values.phone}
+                    ></input> */}
                   </Tippy>
                 </div>
                 <div>

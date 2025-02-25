@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "both":"concurrently \"npm run start\" \"nodemon ./Backend/index.js\" "
+    "both": "concurrently \"npm run start\" \"nodemon ./Backend/index.js\" "
   },
   "dependencies": {
     "@tippyjs/react": "^4.2.6",
@@ -19,6 +19,7 @@
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.16",
     "formik": "^2.4.3",
+    "framer-motion": "^12.4.7",
     "next": "13.4.16",
     "nodemon": "^3.0.1",
     "postcss": "8.4.28",

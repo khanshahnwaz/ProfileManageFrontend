@@ -43,8 +43,25 @@ function Profile(props) {
 
                 {/* first form section */}
                 <div className="w-full border-2 border-gray-200 p-3 ">
-                  {/* email */}
+                  
+                  
                   <div className='min-w-0 grid gap-y-3'>
+                
+                
+{/* username */}
+                  <div className="flex justify-between">
+                      <div>
+                        <p>UserName</p>
+                        <p>{userData.UserName}</p>
+                      </div>
+                      <button
+                        className="px-4  rounded-xl bg-gray-200 h-max my-auto"
+                        onClick={() => context.setEditProfile(true)}
+                      >
+                        Edit
+                      </button>
+                    </div>
+{/* email */}
                     <div className="flex justify-between">
                       <div>
                         <p>Email</p>
@@ -70,8 +87,19 @@ function Profile(props) {
                         Edit
                       </button>
                     </div>
-                  
-
+                  {/* gender */}
+                  <div className="flex justify-between">
+                      <div>
+                        <p>Gender</p>
+                        <p>{userData.Gender}</p>
+                      </div>
+                      <button
+                        className="px-4 rounded-xl bg-gray-200 h-max my-auto"
+                        onClick={() => context.setEditProfile(true)}
+                      >
+                        Edit
+                      </button>
+                    </div>
                   {/* phone  */}
                   <div className="flex justify-between">
                     <div>

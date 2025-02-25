@@ -18,8 +18,9 @@ const EditProfile = (props) => {
   const [visiEmail, setViisiEmail] = useState(false);
   const [visiName, setVisiName] = useState(false);
   const [visiPhone, setVisiPhone] = useState(false);
-
-  const { Name, Email, Phone } = props.data;
+ const[visiUserName,setVisiUserName]=useState(false);
+ const[visiGender,setVisiGender]=useState(false)
+  const { Name, Email, Phone,UserName,Gender } = props.data;
 
   // Formik library
   const formik = useFormik({
@@ -27,11 +28,18 @@ const EditProfile = (props) => {
       name: Name,
       email: Email,
       phone: Phone,
+      userName:UserName,
+      gender:Gender
     },
     enableReinitialize: true,
     validate: (values) => {
       console.log(formik.values);
       const errors = {};
+
+      if(!values.gender)
+      errors.gender="Required"
+      if(!values.userName)
+        errors.userName="Required"
 
       if (!values.email) {
         errors.email = "Required";
@@ -55,6 +63,8 @@ const EditProfile = (props) => {
         email: values.email,
         name: values.name,
         phone: values.phone,
+        userName:values.userName,
+        gender:values.gender
       };
       // console.log("sent data",JSON.stringify(data))
       const response = await fetch(`${context.url}/user/editProfile`, {
@@ -76,6 +86,13 @@ const EditProfile = (props) => {
   });
 
   useEffect(() => {
+
+    if(formik.errors.gender && formik.touched.gender)
+      setVisiGender(true);
+    else setVisiGender(false)
+    if(formik.errors.userName && formik.touched.userName)
+      setVisiUserName(true);
+    else setVisiUserName(false)
     if (formik.errors.email && formik.touched.email) {
       setViisiEmail(true);
     } else setViisiEmail(false);
@@ -160,6 +177,30 @@ const EditProfile = (props) => {
 
                   <div>
                     <label
+                      htmlFor="userName"
+                      className="float-left text-blue-900 font-bold"
+                    >
+                      UserName
+                    </label>
+                    <br />
+                    <Tippy
+                      visible={visiUserName}
+                      content={formik.errors.userName}
+                      placement="top-end"
+                    >
+                      <input
+                        type="text"
+                        className="border-2 border-[#bd8ce2] rounded-lg float-left mt-1 py-2 w-full"
+                        name="userName"
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                        value={formik.values.userName}
+                      ></input>
+                    </Tippy>
+                  </div>
+
+                  <div>
+                    <label
                       htmlFor="phone"
                       className="float-left text-blue-900 font-bold"
                     >
@@ -181,6 +222,41 @@ const EditProfile = (props) => {
                       ></input>
                     </Tippy>
                   </div>
+                   {/* gender */}
+                <div>
+                  <label
+                    htmlFor="gender"
+                    className="float-left text-blue-900 font-bold"
+                  >
+                    Gender
+                  </label>
+                  <br />
+                  <Tippy
+                    visible={visiGender}
+                    content={formik.errors.gender}
+                    placement="top-end"
+                  >
+                    <select 
+                    name="gender" 
+                    className="border-2 border-blue-900 rounded-lg float-left mt-1 py-2 w-full"
+                     value={formik.values.gender}
+                     onChange={formik.handleChange}
+                     onBlur={formik.handleBlur}>
+                      <option value="">Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Non Binary">Non Binary</option>
+                    </select>
+                    {/* <input
+                      type="text"
+                      className="border-2 border-blue-900 rounded-lg float-left mt-1 py-2 w-full"
+                      name="gender"
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      value={formik.values.phone}
+                    ></input> */}
+                  </Tippy>
+                </div>
                 </div>
 
                 <button
